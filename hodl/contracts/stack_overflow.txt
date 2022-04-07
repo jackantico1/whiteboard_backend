@@ -1,0 +1,31 @@
+I'm working on a smart contract called Programmed Diamond Hands. For those unfamiliar with the phrase, Diamond Hands is the idea that you don't sell when Crypto (or any assets) fall. I built a version that works with native coins (Ethereum) but I want to expand it to ERC-20 and ERC-721 Tokens. This project is kind of similar to a Roth IRA where you can put money away for retirement and you're then incentivized to not touch it for 40+ years.
+
+This is the code I've written so far
+```
+contract Diamond_Hands {
+
+   function make_holding(uint _days_to_hodl) payable public returns(uint) {
+    require(msg.value < 0.1 ether, "Holding was not created, insufficent funds");
+    Hold_Struct memory new_hold;
+    new_hold.hold_id = num_of_holdings;
+    new_hold.addy = payable(msg.sender);
+    new_hold.seconds_to_hold = _seconds_to_hold;
+    new_hold.wei_stored = msg.value; 
+    new_hold.date_hodl_created = block.timestamp;
+    holds[num_of_hold] = new_hodl;
+    num_of_hodls += 1;
+    return num_of_hodls - 1;
+  }
+
+  function collect_hodl(uint id) public {
+    //code removed to keep short, but you get the idea
+  }
+
+  function show_time_left(uint id) public view returns(uint _time_left){
+    //code removed to keep short, but you get the idea
+  }
+
+}
+```
+
+My question now is, based on my knowledge of ERC-20 and ERC-721 tokens, the detailers of the holder of the tokens are stored in the ERC-20 and ERC-721 smart contracts, thus Diamond Hands wouldn't know when tokens are transfered to it
